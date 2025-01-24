@@ -7,7 +7,7 @@
     <style>
         /* Root Variables for Styling */
         :root {
-            --primary-color: #2E7D32;
+            --primary-color: #2E7D32; /* Green color for primary elements */
             --secondary-color: #4CAF50;
             --accent-color: #FFA000;
             --text-color: #333333;
@@ -31,23 +31,48 @@
         }
 
         /* Navigation Styles */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary-color); /* Changed to green */
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
         nav {
-            background-color: var(--primary-color);
-            color: var(--white);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 1rem 5%;
         }
 
         nav .logo {
             font-size: 1.5rem;
             font-weight: bold;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        nav .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav .logo:hover {
+            transform: scale(1.05);
         }
 
         nav ul {
             list-style: none;
             display: flex;
+            align-items: center;
         }
 
         nav ul li {
@@ -59,11 +84,33 @@
             text-decoration: none;
             padding: 0.5rem 1rem;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--white);
+            transition: width 0.3s ease;
         }
 
         nav ul li a:hover {
             background-color: var(--secondary-color);
+        }
+
+        nav ul li a:hover::before {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            font-weight: bold;
         }
 
         /* Section Styles */
@@ -201,47 +248,49 @@
             text-align: center;
             padding: 1rem 0;
             font-size: 0.9rem;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">Rural Empowerment Hub</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="tutorials.html">Tutorials</a></li> <!-- Change href to tutorials.html -->
-            <li><a href="./request.html">Request Aid</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
-    </nav>
+    <div class="nav-container">
+        <nav>
+            <div class="logo">Rural Empowerment Hub</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tutorials.html">Tutorials</a></li>
+                <li><a href="./request.html">Request Aid</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <main>
         <section id="home">
             <h1>Skill Development for Rural India</h1>
             <p style="text-align: center;">Empowering lives through skills and resources.</p>
         </section>
+
+        <section id="video-library">
+            <h2>Video Tutorials</h2>
+            <input type="text" id="search-bar" placeholder="Search tutorials...">
+            <div id="video-grid">
+                <!-- Example video cards -->
+                <div class="video-card">
+                    <img src="https://via.placeholder.com/250" alt="Tutorial">
+                    <h3>Basic Farming Techniques</h3>
+                </div>
+                <div class="video-card">
+                    <img src="https://via.placeholder.com/250" alt="Tutorial">
+                    <h3>Efficient Irrigation Methods</h3>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <section id="home">
-        <h1>Skill Development for Rural India</h1>
-        <p style="text-align: center;">Empowering lives through skills and resources.</p>
-    </section>
-
-    <section id="video-library">
-        <h2>Video Tutorials</h2>
-        <input type="text" id="search-bar" placeholder="Search tutorials...">
-        <div id="video-grid">
-            <!-- Example video cards -->
-            <div class="video-card">
-                <img src="https://via.placeholder.com/250" alt="Tutorial">
-                <h3>Basic Farming Techniques</h3>
-            </div>
-            <div class="video-card">
-                <img src="https://via.placeholder.com/250" alt="Tutorial">
-                <h3>Efficient Irrigation Methods</h3>
-            </div>
-        </div>
-    </section>
     <footer>
         <p>&copy; 2025 Rural Empowerment Hub. All Rights Reserved.</p>
     </footer>
