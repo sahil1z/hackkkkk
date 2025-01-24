@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Empowerment Hub</title>
+    <style>
+        /* Root Variables for Styling */
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #4CAF50;
+            --accent-color: #FFA000;
+            --text-color: #333333;
+            --background-color: #F5F5F5;
+            --white: #FFFFFF;
+            --gray: #DDDDDD;
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Section Styles */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Video Library Styles */
+        #video-library {
+            text-align: center;
+        }
+
+        #search-bar {
+            width: 80%;
+            padding: 0.75rem;
+            margin: 1rem auto;
+            display: block;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+        }
+
+        #video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .video-card {
+            background: var(--white);
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .video-card h3 {
+            margin: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Request Aid Form */
+        #aid-request-form input, #aid-request-form select, #aid-request-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+        }
+
+        #aid-request-form button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #aid-request-form button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Donation Section */
+        .donation-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .donate-btn {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-btn:hover {
+            background-color: #E59500;
+        }
+
+        #custom-donation {
+            width: 150px;
+            padding: 0.5rem;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+        }
+
+        #donate-submit {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #donate-submit:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Rural Empowerment Hub</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li> <!-- Change href to tutorials.html -->
+            <li><a href="./request.html">Request Aid</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+    
+
+    <main>
+        <section id="home">
+            <h1>Skill Development for Rural India</h1>
+            <p style="text-align: center;">Empowering lives through skills and resources.</p>
+        </section>
+
+       
+        <header style="text-align: center; padding: 40px 20px; background-color: #ffffff; color: rgb(255, 255, 255);">
+            <h1 style="font-size: 2.5rem;">Requested Donations</h1>
+            <p style="font-size: 1.2rem;">Meet the individuals and families in need of your support.</p>
+        </header>
+    
+        <!-- Person Profiles Section -->
+        <section id="profiles" style="padding: 40px 20px;">
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 20px;">Profiles of Those in Need</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    
+                <!-- Profile 1 -->
+                <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 300px; text-align: center;">
+                    <img src="old1.jpg" alt="Profile 1" style="width: 130px; height: 130px; border-radius: 50%; margin-bottom: 7px;">
+                    <h3 style="font-size: 1.5rem; margin: 10px 0;">Ramesh Kumar</h3>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Age:</strong> 45</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Location:</strong> Bihar, India</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Needs:</strong> Medical treatment for heart disease</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Goal:</strong> $2,000</p>
+                    <a href="finalqr.html" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px;">Donate Now</a>
+                </div>
+    
+                <!-- Profile 2 -->
+                <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 300px; text-align: center;">
+                    <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile 2" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5rem; margin: 10px 0;">Sunita Devi</h3>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Age:</strong> 32</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Location:</strong> Uttar Pradesh, India</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Needs:</strong> Funds for her children's education</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Goal:</strong> $1,500</p>
+                    <a href="#donate-form" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px;">Donate Now</a>
+                </div>
+    
+                <!-- Profile 3 -->
+                <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 300px; text-align: center;">
+                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile 3" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5rem; margin: 10px 0;">Arjun Singh</h3>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Age:</strong> 28</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Location:</strong> Rajasthan, India</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Needs:</strong> Funds to start a small business</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Goal:</strong> $3,000</p>
+                    <a href="#donate-form" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px;">Donate Now</a>
+                </div>
+    
+                <!-- Profile 4 -->
+                <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 300px; text-align: center;">
+                    <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile 4" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5rem; margin: 10px 0;">Meena Sharma</h3>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Age:</strong> 50</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Location:</strong> Madhya Pradesh, India</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Needs:</strong> Funds for cataract surgery</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Goal:</strong> $1,200</p>
+                    <a href="#donate-form" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px;">Donate Now</a>
+                </div>
+    
+                <!-- Profile 5 -->
+                <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 300px; text-align: center;">
+                    <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile 5" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5rem; margin: 10px 0;">Rajesh Patel</h3>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Age:</strong> 35</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Location:</strong> Gujarat, India</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Needs:</strong> Funds for farming equipment</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Goal:</strong> $2,500</p>
+                    <a href="#donate-form" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px;">Donate Now</a>
+                </div>
+    
+                <!-- Profile 6 -->
+                <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 300px; text-align: center;">
+                    <img src="https://images.pexels.com/photos/1239281/pexels-photo-1239281.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile 6" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5rem; margin: 10px 0;">Anita Verma</h3>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Age:</strong> 40</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Location:</strong> Haryana, India</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Needs:</strong> Funds for her daughter's medical treatment</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Goal:</strong> $3,500</p>
+                    <a href="#donate-form" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px;">Donate Now</a>
+                </div>
+    
+                <!-- Profile 7 -->
+                <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 300px; text-align: center;">
+                    <img src="https://images.pexels.com/photos/1239283/pexels-photo-1239283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile 7" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5rem; margin: 10px 0;">Vikas Mehta</h3>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Age:</strong> 30</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Location:</strong> Punjab, India</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Needs:</strong> Funds for vocational training</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Goal:</strong> $1,800</p>
+                    <a href="#donate-form" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px;">Donate Now</a>
+                </div>
+    
+                <!-- Profile 8 -->
+                <div style="background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; width: 300px; text-align: center;">
+                    <img src="https://images.pexels.com/photos/1239285/pexels-photo-1239285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Profile 8" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 15px;">
+                    <h3 style="font-size: 1.5rem; margin: 10px 0;">Priya Yadav</h3>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Age:</strong> 25</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Location:</strong> Maharashtra, India</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Needs:</strong> Funds for higher education</p>
+                    <p style="color: #555; margin-bottom: 10px;"><strong>Goal:</strong> $2,200</p>
+                    <a href="#donate-form" style="text-decoration: none; background-color: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px; display: inline-block; margin-top: 10px;">Donate Now</a>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Donation Form Section -->
+        <section id="donate-form" style="padding: 40px 20px; background-color: white; text-align: center;">
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Make a Donation</h2>
+            <form style="max-width: 500px; margin: 0 auto; text-align: left;">
+                <label for="name" style="display: block; margin-bottom: 10px;">Full Name:</label>
+                <input type="text" id="name" name="name" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;" required>
+    
+                <label for="email" style="display: block; margin-bottom: 10px;">Email:</label>
+                <input type="email" id="email" name="email" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;" required>
+    
+                <label for="amount" style="display: block; margin-bottom: 10px;">Donation Amount ($):</label>
+                <input type="number" id="amount" name="amount" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;" required>
+    
+                <label for="message" style="display: block; margin-bottom: 10px;">Message (Optional):</label>
+                <textarea id="message" name="message" rows="5" style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+    
+                <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-weight: bold; width: 100%;">Donate Now</button>
+            </form>
+        </section>
+
+       
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Rural Empowerment Hub. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Donation functionality
+        const donateButtons = document.querySelectorAll('.donate-btn');
+        const customDonationInput = document.getElementById('custom-donation');
+        const donateSubmit = document.getElementById('donate-submit');
+
+        donateButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                customDonationInput.value = button.dataset.amount;
+            });
+        });
+
+        donateSubmit.addEventListener('click', () => {
+            const amount = parseFloat(customDonationInput.value);
+            if (amount && amount > 0) {
+                alert(`Thank you for your donation of ₹${amount}!`);
+            } else {
+                alert('Please enter a valid donation amount.');
+            }
+        });
+
+        // Aid request form functionality
+        const aidRequestForm = document.getElementById('aid-request-form');
+        aidRequestForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Your request has been submitted. We will contact you soon.');
+            aidRequestForm.reset();
+        });
+    </script>
+</body>
+</html>
