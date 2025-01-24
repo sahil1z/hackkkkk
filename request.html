@@ -1,23 +1,11 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rural Empowerment Hub</title>
+    <title>Request Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* Root Variables for Styling */
         :root {
@@ -28,23 +16,36 @@
             --background-color: #F5F5F5;
             --white: #FFFFFF;
             --gray: #DDDDDD;
+            --nav-hover: rgba(255,255,255,0.1);
         }
 
         /* General Reset */
         * {
+            
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
+        body, html {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Navigation Styles */
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Enhanced Navigation Styles */
         .nav-container {
             position: fixed;
             top: 0;
@@ -126,135 +127,36 @@
         nav ul li a.active {
             font-weight: bold;
         }
-        /* Section Styles */
+
+        /* Main Content Styles */
         main {
+            position: relative;
+            z-index: 10;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 80px auto 0;
             padding: 2rem;
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        section {
-            margin-bottom: 2rem;
-        }
+        /* Additional responsive design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
 
-        h1, h2 {
-            text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+            }
 
-        /* Video Library Styles */
-        #video-library {
-            text-align: center;
+            nav ul li {
+                margin: 0.5rem 0;
+            }
         }
-
-        #search-bar {
-            width: 80%;
-            padding: 0.75rem;
-            margin: 1rem auto;
-            display: block;
-            border: 1px solid var(--gray);
-            border-radius: 5px;
-        }
-
-        #video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .video-card {
-            background: var(--white);
-            border: 1px solid var(--gray);
-            border-radius: 5px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .video-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .video-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .video-card h3 {
-            margin: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        /* Request Aid Form */
-        #aid-request-form input, #aid-request-form select, #aid-request-form textarea {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid var(--gray);
-            border-radius: 5px;
-        }
-
-        #aid-request-form button {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #aid-request-form button:hover {
-            background-color: var(--primary-color);
-        }
-
-        /* Donation Section */
-        .donation-options {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .donate-btn {
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .donate-btn:hover {
-            background-color: #E59500;
-        }
-
-        #custom-donation {
-            width: 150px;
-            padding: 0.5rem;
-            border: 1px solid var(--gray);
-            border-radius: 5px;
-        }
-
-        #donate-submit {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #donate-submit:hover {
-            background-color: var(--secondary-color);
-        }
-
-        /* Footer Styles */
+        
         footer {
             background-color: var(--primary-color);
             color: var(--white);
@@ -263,84 +165,120 @@
             font-size: 0.9rem;
         }
     </style>
+    <script>
+        function sendOTP() {
+            const mobile = document.getElementById('mobile').value;
+            if (mobile.length === 10 && /^[0-9]+$/.test(mobile)) {
+                alert('OTP has been sent to your mobile number: ' + mobile);
+            } else {
+                alert('Please enter a valid 10-digit mobile number.');
+            }
+        }
+
+        function submitRequest(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            const form = new FormData(document.querySelector('form'));
+            const formData = {
+                name: form.get('name'),
+                village: form.get('village'),
+                district: form.get('district'),
+                pincode: form.get('pincode'),
+                purpose: form.get('purpose'),
+                mobile: form.get('mobile'),
+            };
+
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message || 'Your request has been successfully submitted!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your request.');
+            });
+        }
+    </script>
 </head>
 <body>
+
+<header>
+    <h1>Request Registration Form</h1>
+</header>
+
+<div class="nav-container">
     <nav>
-        <div class="logo">Rural Empowerment Hub</div>
+        <div class="logo">
+            Rural Empowerment Hub
+        </div>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="tutorials.html">Tutorials</a></li> <!-- Change href to tutorials.html -->
-            <li><a href="./request.html">Request Aid</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+            <li><a href="request.html">Request Aid</a></li>
             <li><a href="donate.html">Donate</a></li>
             <li><a href="#about">About</a></li>
         </ul>
     </nav>
+</div>
 
-    <main>
-        <section id="home">
-            <h1>Skill Development for Rural India</h1>
-            <p style="text-align: center;">Empowering lives through skills and resources.</p>
-        </section>
-    </main>
-
-
-    
-    <section id="home">
-        <h1>Skill Development for Rural India</h1>
-        <p style="text-align: center;">Empowering lives through skills and resources.</p>
-    </section>
-
-    
-    <section id="request-aid">
-    <h2>Request Aid</h2>
-    <form id="aid-request-form">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="tel" name="phone" placeholder="Phone Number" required>
-        <select name="aid-type" required>
-            <option value="">Select Aid Type</option>
-            <option value="skills">Skills Training</option>
-            <option value="equipment">Agricultural Equipment</option>
-            <option value="education">Educational Support</option>
-        </select>
-        <textarea name="details" placeholder="Describe your needs" required></textarea>
-        <button type="submit">Submit Request</button>
-    </form>
-</section>
-
-<section id="donate">
-    <h2>Support Our Mission</h2>
-    <div class="donation-options">
-        <button class="donate-btn" data-amount="500">₹500</button>
-        <button class="donate-btn" data-amount="1000">₹1000</button>
-        <button class="donate-btn" data-amount="5000">₹5000</button>
-        <input type="number" id="custom-donation" placeholder="Custom Amount">
-        <button id="donate-submit">Donate</button>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="form-wrapper col-md-6 col-lg-5">
+        <h2 class="text-center text-success">Register to Receive Support</h2>
+        <p class="text-center">Fill out the form below to apply for assistance from an NGO.</p>
+        <form onsubmit="submitRequest(event)">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your full name" required name="name" />
+            </div>
+            <div class="mb-3">
+                <label for="village" class="form-label">Village Name</label>
+                <input type="text" class="form-control" id="village" placeholder="Enter your village name" required name="village" />
+            </div>
+            <div class="mb-3">
+                <label for="district" class="form-label">District Name</label>
+                <input type="text" class="form-control" id="district" placeholder="Enter your district name" required name="district" />
+            </div>
+            <div class="mb-3">
+                <label for="pincode" class="form-label">Pincode</label>
+                <input type="text" class="form-control" id="pincode" placeholder="Enter your pincode" maxlength="6" required name="pincode" />
+            </div>
+            <div class="mb-3">
+                <label for="purpose" class="form-label">Purpose</label>
+                <textarea class="form-control" id="purpose" rows="4" placeholder="Explain the reason for seeking support" required name="purpose"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="mobile" class="form-label">Mobile Number</label>
+                <input type="text" class="form-control" id="mobile" placeholder="Enter your 10-digit mobile number" maxlength="10" required name="mobile">
+            </div>
+            <div class="mb-3">
+                <label for="otp" class="form-label">OTP</label>
+                <input type="password" class="form-control" id="otp" placeholder="Enter your OTP" maxlength="4" required>
+            </div>
+            <div class="row mb-3" >
+                <div class="col-6">
+                    <button type="button" class="btn btn-success w-100 mb-3" onclick="sendOTP()">Send OTP</button>
+                </div>
+                <div class="col-6">
+                    <button type="submit" class="btn btn-success w-100 mb-3">Submit Application</button>
+                </div>
+            </div>
+        </form>
     </div>
-</section>
+</div>
 
-    <footer>
-        <p>&copy; 2025 Rural Empowerment Hub. All Rights Reserved.</p>
-    </footer>
+<footer>
+    <p>NGO Support Platform &copy; 2025</p>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
